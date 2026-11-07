@@ -38,3 +38,24 @@ Additional authentic clinic photos come from https://www.drgezo.ba/foto-galerija
 - https://www.pexels.com/photo/a-woman-stretching-her-arms-6293241/
 
 The exact original doctor pose and uniform background cannot be reproduced using the available authentic clinic portraits; their original photographs are preserved rather than replacing staff with stock subjects. Eight verified ORL specialty categories replace the reference's sixteen general specialties, and verified location cards replace unsourced testimonials.
+
+## ENT art direction and carousel refinement
+
+The currently deployed Site is unchanged. This local revision retains and redesigns the services and team carousels; the clinic gallery now uses the same manual navigation language with a shorter landscape format. Native touch scrolling, scroll snapping, keyboard arrows/Home/End, disabled endpoint controls, visible ranges, live announcements and reduced-motion support replace fixed-pixel scrolling. There is no autoplay.
+
+Image audit:
+- Hero: the generic posed clinician is replaced by an explicitly illustrative ear-examination scene.
+- Services: otoscopy, a clinic audiometer, clinic endoscopy equipment, a throat examination, and clinic surgical instruments. Generic phone/stethoscope/syringe imagery is no longer used.
+- Team: original clinic portraits, cropped consistently into a wider frame to preserve faces and shoulders.
+- Specialties and patient convenience: concise static grids remain useful for scanning; they are not converted into sliders.
+- Locations: both verified addresses and telephone numbers remain visible in static cards.
+- Clinic gallery: authentic ORL rooms, reception, microscope and recovery-space photographs, plus the reference-inspired typographic oval.
+- Closing CTA: the reference-aligned lifestyle image remains as a wellbeing interlude, explicitly labeled illustrative.
+- Footer: oversized brand signature, concise clinic navigation, dedicated location/phone columns, email, opening hours and demo disclosure.
+
+New illustrative photos are licensed under https://www.pexels.com/license/:
+- https://www.pexels.com/photo/doctor-and-patient-during-examination-8313446/
+- https://www.pexels.com/photo/a-patient-having-ear-examination-5206951/
+- https://www.pexels.com/photo/doctor-and-patient-during-examination-7579824/
+
+Inter is self-hosted as Latin and Latin Extended WOFF2 fonts; the SIL Open Font License is included in public/fonts/OFL.txt. Bosnian characters are supported locally with no external font requests.
