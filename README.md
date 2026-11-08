@@ -67,3 +67,11 @@ Replaced the outdoor closing image with an ear examination (Pexels photo 5206942
 ## Card polish and motion
 
 Services now have refined translucent category labels, clearer captions, rounded directional actions and a subtle lift/image treatment on pointer hover. Team cards use lighter information panels, aligned names and qualifications, fine borders and matching profile actions. Both sections receive a one-time staggered fade/rise reveal using IntersectionObserver and compositor animations. Reduced-motion preferences skip reveals and cancel active animations; no autoplay is introduced. Verified reveal timing and hover states at 1237 and 390px, plus the existing seven-width interaction and accessibility checks.
+
+## Appointment and contact requests
+
+Added a dedicated `#zakazivanje` section with accessible keyboard-operated tabs for an appointment request and a contact inquiry. Primary appointment CTAs and the contact navigation link lead to it. The appointment form collects name, telephone, branch, service, preferred date and day period; contact inquiries collect name, email, topic, an optional phone and a message. Users review and edit their information before opening a prepared email to the published clinic address, info@drgezo.ba. Clipboard copying has a selectable-text fallback. The UI explicitly says the clinic confirms the appointment.
+
+This remains a static frontend: requests are not automatically transmitted, stored in a database or booked against a live calendar. There is no claim of real-time availability. Only the user's explicit email action hands off a prepared draft; no test email was sent. Validation covers required fields, phone/email formats, past dates, Sunday closures, Otoka's Saturday closure and Dobrinja's Saturday hours. The form appears before supplementary steps/contact cards on mobile, with matching DOM and keyboard order.
+
+Production build/TypeScript passed. Browser verification covered both form flows, review/edit, encoded draft contents, clipboard success/fallback, keyboard tabs, and responsive layouts at 320, 390, 768, 1024 and 1440px. No clipped text, broken images or page overflow. Screenshots and the check report are under /workspace/work/appointment-review/.

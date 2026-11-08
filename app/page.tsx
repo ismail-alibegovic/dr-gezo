@@ -3,6 +3,7 @@
 import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {ArrowUpRight, ArrowUp, ArrowDown, ArrowRight, Phone, Plus, Menu, X, Ear, Wind, AudioLines, Microscope, Stethoscope, ShieldCheck, MapPin, HeartPulse, Scan, CalendarDays, Mail, Activity, Clock} from 'lucide-react';
 import Carousel from './components/Carousel';
+import Appointment from './components/Appointment';
 
 const official = 'https://www.drgezo.ba';
 const services = [
@@ -46,7 +47,7 @@ const faqs = [
   ['Gdje mogu pogledati cijene usluga?', 'Cjenovnik je dostupan na službenoj stranici drgezo.ba/cjenovnik. Za informacije o konkretnoj usluzi pozovite polikliniku.'],
 ];
 
-function Button({children, href='#kontakt', secondary=false}: {children:ReactNode; href?:string; secondary?:boolean}) {
+function Button({children, href='#zakazivanje', secondary=false}: {children:ReactNode; href?:string; secondary?:boolean}) {
   return <a className={`button${secondary?' button-secondary':''}`} href={href}>{secondary?<ArrowUpRight size={14}/>:<Plus size={14}/>}<span>{children}</span></a>;
 }
 function MapLink({address, children}: {address:string; children:ReactNode}) {
@@ -72,9 +73,9 @@ export default function Home() {
         <header>
           <a className="brand" href="#pocetna" aria-label="Poliklinika Dr. Gežo — početna"><img src="/images/logo.png" width={250} height={63} alt="Poliklinika Dr. Gežo"/></a>
           <nav id="main-navigation" ref={navigation} className={menu?'open':''} aria-label="Glavna navigacija">
-            {[['Početna','pocetna'],['O nama','o-nama'],['Usluge','usluge'],['Naš tim','tim'],['Lokacije','lokacije'],['Kontakt','kontakt']].map(([text, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{text}</a>)}
+            {[['Početna','pocetna'],['O nama','o-nama'],['Usluge','usluge'],['Naš tim','tim'],['Lokacije','lokacije'],['Kontakt','zakazivanje']].map(([text, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{text}</a>)}
           </nav>
-          <a className="header-cta" href="#kontakt">ZAKAŽITE PREGLED<ArrowUpRight size={13}/></a>
+          <a className="header-cta" href="#zakazivanje">ZAKAŽITE PREGLED<ArrowUpRight size={13}/></a>
           <button ref={menuButton} className="mobile-menu" aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>{menu?<X size={22}/>:<Menu size={22}/>}</button>
         </header>
         <section className="hero" aria-labelledby="hero-title">
@@ -119,14 +120,16 @@ export default function Home() {
         {gallery.map(item => <a className="gallery-card" key={item.image} href={`${official}/foto-galerija`} target="_blank" rel="noreferrer"><div className="gallery-photo"><img src={`/images/${item.image}`} width={800} height={533} style={{objectPosition:item.position}} alt={item.title} loading="lazy"/></div><div className="gallery-caption"><h3>{item.title}</h3><span>{item.detail}</span></div></a>)}
       </Carousel>
 
+      <Appointment/>
+
       <section className="section faq" aria-labelledby="faq-title"><div><p className="eyebrow blue">DOBRO JE ZNATI</p><h2 id="faq-title">Česta pitanja.</h2><p className="intro">Trebate dodatne informacije?<br/>Pozovite nas. Rado ćemo vam pomoći.</p><a className="text-link" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={16}/></a></div><div className="faq-list">{faqs.map(([question,answer],index) => <details key={question}><summary><span className="faq-number">0{index+1}</span><span>{question}</span><Plus size={17}/></summary><p>{answer}</p></details>)}</div></section>
 
-      <section className="final-cta" id="kontakt" aria-labelledby="contact-title"><div className="final-photo"><img src="/images/ent-consultation.jpg" width={1800} height={1200} alt="ORL pregled uha otoskopom" loading="lazy"/></div><div className="final-shade"/><div className="final-content"><p className="eyebrow">TU SMO ZA VAS</p><h2 id="contact-title">VAŠE ZDRAVLJE<br/>ZASLUŽUJE<br/>POSEBNU<br/>PAŽNJU.</h2><p>Prvi korak je razgovor.<br/>Javite nam se i dogovorite svoj pregled.</p></div><div className="final-actions"><Button href="tel:+38733450102">POZOVITE DOBRINJU</Button><Button secondary href="tel:+38733526400">POZOVITE OTOKU</Button></div></section>
+      <section className="final-cta" id="kontakt" aria-labelledby="contact-title"><div className="final-photo"><img src="/images/ent-consultation.jpg" width={1800} height={1200} alt="ORL pregled uha otoskopom" loading="lazy"/></div><div className="final-shade"/><div className="final-content"><p className="eyebrow">TU SMO ZA VAS</p><h2 id="contact-title">VAŠE ZDRAVLJE<br/>ZASLUŽUJE<br/>POSEBNU<br/>PAŽNJU.</h2><p>Prvi korak je razgovor.<br/>Javite nam se i dogovorite svoj pregled.</p></div><div className="final-actions"><Button href="#zakazivanje">ZAKAŽITE PREGLED</Button><Button secondary href="tel:+38733450102">POZOVITE DOBRINJU</Button><Button secondary href="tel:+38733526400">POZOVITE OTOKU</Button></div></section>
 
       <footer>
         <div className="footer-brand-row"><span className="footer-kicker">POLIKLINIKA DR. GEŽO · SARAJEVO</span><a className="back-to-top" href="#pocetna" aria-label="Nazad na vrh"><ArrowUp size={19}/></a></div>
         <div className="footer-wordmark" aria-label="Dr. Gežo">Dr. Gežo<span>OD<br/>1997.</span></div>
-        <div className="footer-grid"><div className="footer-intro"><h3>Stručnost koja sluša.<br/>Briga koja traje.</h3><p>Specijalistička poliklinika za zdravlje<br/>uha, nosa i grla.</p><a className="footer-email" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={17}/></a></div><div className="footer-navigation"><h4>POLIKLINIKA</h4><a href="#o-nama">O nama</a><a href="#usluge">Naše usluge</a><a href="#tim">Medicinski tim</a><a href="#prostori">Prostori poliklinike</a><a href={`${official}/cjenovnik`}>Cjenovnik</a></div>{locations.map(location => <div className="footer-location" key={location.name}><h4>{location.name.toUpperCase()}</h4><p>{location.address}<br/>71000 Sarajevo</p><a className="footer-phone" href={`tel:${location.tel}`}>{location.phone}<ArrowUpRight size={18}/></a><MapLink address={location.address}>Kako do nas</MapLink></div>)}</div>
+        <div className="footer-grid"><div className="footer-intro"><h3>Stručnost koja sluša.<br/>Briga koja traje.</h3><p>Specijalistička poliklinika za zdravlje<br/>uha, nosa i grla.</p><a className="footer-email" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={17}/></a></div><div className="footer-navigation"><h4>POLIKLINIKA</h4><a href="#o-nama">O nama</a><a href="#usluge">Naše usluge</a><a href="#tim">Medicinski tim</a><a href="#prostori">Prostori poliklinike</a><a href="#zakazivanje">Zakažite pregled</a><a href={`${official}/cjenovnik`}>Cjenovnik</a></div>{locations.map(location => <div className="footer-location" key={location.name}><h4>{location.name.toUpperCase()}</h4><p>{location.address}<br/>71000 Sarajevo</p><a className="footer-phone" href={`tel:${location.tel}`}>{location.phone}<ArrowUpRight size={18}/></a><MapLink address={location.address}>Kako do nas</MapLink></div>)}</div>
         <div className="footer-hours"><span><Clock size={16}/>RADNO VRIJEME</span><p>Pon–pet <strong>09:00–19:00</strong></p><p>Subota · Dobrinja <strong>09:00–17:00</strong></p><p className="footer-hours-note">Otoka ne radi subotom.</p></div>
         <div className="footer-bottom"><a href={official} target="_blank" rel="noreferrer">Službena stranica<ArrowUpRight size={12}/></a></div>
       </footer>
