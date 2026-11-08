@@ -37,7 +37,6 @@
   --dur-fast:.16s;
   --dur-base:.25s;
   --dur-media:.5s;
-  interpolate-size:allow-keywords;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
@@ -61,7 +60,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visi
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:#fff;font-size:11.5px;font-weight:500;letter-spacing:.4px;white-space:nowrap;transition:background var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),transform var(--dur-press) var(--ease-out)}
 .button:hover{background:var(--blue);border-color:var(--blue)}
-.button:active,.header-cta:active,.arrows button:active:not(:disabled),.menu-toggle:active{transform:scale(.97)}
 .button-light{background:#fff;border-color:#fff;color:var(--ink)}
 .button-light:hover{background:#e9f4fb;border-color:#e9f4fb;color:var(--ink)}
 .button-outline{background:transparent;color:var(--ink);border-color:#111a2c33}
@@ -197,7 +195,7 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
 .request-tabs button{flex:1;min-width:0;min-height:46px;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;background:transparent;color:var(--muted);font-size:13px;font-weight:500;transition:background .2s,color .2s}
 .request-tabs button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px #111a2c14}
 .request-tabs button:hover{color:var(--ink)}
-.request-panel{padding:28px 24px 22px;animation:request-appear .2s ease-out}
+.request-panel{padding:28px 24px 22px}
 .request-panel[hidden]{display:none}
 .request-form-heading{margin-bottom:24px}
 .request-form-heading h3{font-size:22px;line-height:1.2;font-weight:500;letter-spacing:-.6px}
@@ -243,7 +241,6 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
 .request-preview-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .request-copy-status{font-size:13px;line-height:1.6;color:var(--blue);margin-top:8px}
 .request-copy-status:empty{display:none}
-@keyframes request-appear{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}
 
 /* ---------- FAQ ---------- */
 .faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:72px;padding-bottom:112px}
@@ -255,8 +252,6 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
 .faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:62px;padding:14px 0;font-size:15px;line-height:1.45;cursor:pointer}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary svg{color:#7a8699;transition:transform var(--dur-base) var(--ease-out)}
-.faq-list details::details-content{block-size:0;overflow:hidden;transition:block-size .3s var(--ease-out),content-visibility .3s allow-discrete}
-.faq-list details[open]::details-content{block-size:auto}
 .faq details[open] summary svg{transform:rotate(180deg)}
 .faq details p{padding:0 40px 20px 0;color:var(--muted);font-size:14px;line-height:1.7}
 
@@ -287,8 +282,6 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
 .footer-bottom a:hover{color:#fff}
 
 /* ---------- Motion ---------- */
-@media(hover:hover) and (pointer:fine){.button:hover,.header-cta:hover{transform:translateY(-1px)}.button:active,.header-cta:active{transform:scale(.97)}.service-card:hover>img,.doctor-card:hover>img,.gallery-card:hover img{transform:scale(1.04)}}
-@media(hover:hover) and (pointer:fine){.service-card:hover,.doctor-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px #111a2c1f}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.carousel-track{scroll-behavior:auto}*,*::before,*::after{transition-property:color,background-color,border-color,opacity,box-shadow!important}*,*::before,*::after{animation:none!important}.button:hover,.button:active,.header-cta:hover,.header-cta:active,.arrows button:active,.menu-toggle:active,.service-card:hover,.doctor-card:hover,.service-card:hover>img,.doctor-card:hover>img,.gallery-card:hover img{transform:none!important}.faq-list details::details-content{transition:none}.site-header nav.open{transform:none}}
 
 /* ---------- Laptop / tablet ---------- */
@@ -393,17 +386,3 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
   .hero .actions .button{font-size:11px}
 }
 
-/* ---------- Entrance and menu motion ---------- */
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.hero-copy>*,.hero-stats,.hero-foot{animation:rise .7s var(--ease-out) both}
-.hero-copy>.kicker{animation-delay:.05s}
-.hero-copy>h1{animation-delay:.11s}
-.hero-copy>.actions{animation-delay:.17s}
-.hero-stats{animation-delay:.26s}
-.hero-foot{animation-delay:.3s}
-.hero-photo{animation:fade .9s var(--ease-out) both}
-@media(max-width:1000px){
-  .site-header nav.open{transform-origin:top right;transition:opacity var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
-  @starting-style{.site-header nav.open{opacity:0;transform:scale(.97) translateY(-4px)}}
-}
