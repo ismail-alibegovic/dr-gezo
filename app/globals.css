@@ -27,7 +27,7 @@
   --line:#e5e8ee;
   --tile:#f3f5f8;
   --night:#0b111d;
-  --max:1320px;
+  --max:1560px;
   --pad:56px;
   --gap:16px;
   --side:max(var(--pad), calc((100cqi - var(--max)) / 2));
@@ -114,7 +114,7 @@ h2{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:-1.3px}
 .arrows button{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--ink);transition:background .2s,border-color .2s,opacity .2s}
 .arrows button:hover:not(:disabled){background:var(--tile);border-color:#cfd5df}
 .arrows button:disabled{opacity:.35}
-.carousel-track{display:flex;gap:var(--gap);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;margin-right:calc(-1 * var(--side));padding-right:var(--side);scroll-padding-left:0}
+.carousel-track{display:flex;gap:var(--gap);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none}
 .carousel-track::-webkit-scrollbar{display:none}
 .carousel-track:focus-visible{outline-offset:6px;border-radius:10px}
 .carousel-track>*{flex:0 0 calc((var(--content) - 3 * var(--gap)) / 4);scroll-snap-align:start;min-width:0}
