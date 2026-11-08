@@ -59,3 +59,7 @@ New illustrative photos are licensed under https://www.pexels.com/license/:
 - https://www.pexels.com/photo/doctor-and-patient-during-examination-7579824/
 
 Inter is self-hosted as Latin and Latin Extended WOFF2 fonts; the SIL Open Font License is included in public/fonts/OFL.txt. Bosnian characters are supported locally with no external font requests.
+
+## Client annotation corrections — 8 November 2026
+
+Replaced the outdoor closing image with an ear examination (Pexels photo 5206942, https://www.pexels.com/photo/a-doctor-doing-an-ear-examination-5206942/). The gallery's decorative text tile is now an authentic clinic-room photograph, with all five gallery items using the same photo-card structure. Removed visible illustration/provenance notices and the footer's independent-demo statement as explicitly requested. Retained descriptive image alt text and noindex metadata. Verified the corrections at 390, 1237 and 1440px, including image loading, gallery controls and page overflow.

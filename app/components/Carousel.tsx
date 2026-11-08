@@ -9,11 +9,10 @@ type Props = {
   intro?: ReactNode;
   label: string;
   kind: 'services' | 'doctors' | 'gallery';
-  note?: ReactNode;
   children: ReactNode;
 };
 
-export default function Carousel({id, title, intro, label, kind, note, children}: Props) {
+export default function Carousel({id, title, intro, label, kind, children}: Props) {
   const track = useRef<HTMLDivElement>(null);
   const total = Children.count(children);
   const [position, setPosition] = useState({first: 1, last: 1, previous: false, next: true, progress: 0});
@@ -83,7 +82,6 @@ export default function Carousel({id, title, intro, label, kind, note, children}
       <p className="sr-only" id={`${id}-instructions`}>Koristite strelice za pregled ili prevucite prstom. Na tastaturi koristite lijevu i desnu strelicu, Home i End.</p>
       <div className={`carousel-track ${kind}-track`} id={`${id}-track`} ref={track} tabIndex={0} role="group" aria-roledescription="karusel" aria-label={label} aria-describedby={`${id}-instructions`} onKeyDown={onKeyDown}>{children}</div>
       <div className="carousel-bottom">
-        <p>{note}</p>
         <div className="carousel-meter" aria-hidden="true"><span style={{left: `${position.progress * 68}%`}}/></div>
         <span className="swipe-hint">Prevucite za više <ArrowRight size={13}/></span>
       </div>
