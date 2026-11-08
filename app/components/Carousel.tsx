@@ -49,7 +49,7 @@ export default function Carousel({id, title, intro, label, kind, children}: Prop
 
   useEffect(() => {
     const el = track.current;
-    if (!el || kind === 'gallery' || !('IntersectionObserver' in window)) return;
+    if (!el || !('IntersectionObserver' in window)) return;
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
     let played = false;
