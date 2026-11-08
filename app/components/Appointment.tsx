@@ -116,7 +116,7 @@ function RequestForm({mode}: {mode:Mode}) {
   </div>;
 
   return <form ref={formRef} className="request-form" noValidate onSubmit={submit} aria-label={booking?'Zahtjev za zakazivanje pregleda':'Kontaktni upit poliklinici'}>
-    <div className="request-form-heading"><h3>{booking?'Dogovorite svoj pregled.':'Kako vam možemo pomoći?'}</h3><p>{booking?'Odaberite željeni dolazak i ostavite kontakt.':'Za informacije o uslugama, cijenama ili pripremi za pregled.'}</p></div>
+    <div className="request-form-heading"><h3>{booking?'Pripremite zahtjev za pregled.':'Kako vam možemo pomoći?'}</h3><p>{booking?'Odaberite željeni dolazak i ostavite kontakt.':'Za informacije o uslugama, cijenama ili pripremi za pregled.'}</p></div>
     {Object.keys(errors).length?<p className="request-error-summary" role="alert">Provjerite označena polja prije nastavka.</p>:null}
     <div className="request-fields">
       <Field id={`${prefix}-name`} label="Ime i prezime" error={errors.name}><input {...attributes('name',true)} type="text" autoComplete="name" maxLength={80} placeholder="Vaše ime i prezime"/></Field>
@@ -129,7 +129,7 @@ function RequestForm({mode}: {mode:Mode}) {
       </>:<>
         <Field id="contact-topic" label="Tema upita" error={errors.topic}><div className="request-select"><select {...attributes('topic',true)}><option value="">Odaberite temu</option>{topics.map(topic=><option key={topic}>{topic}</option>)}</select><ChevronDown size={15}/></div></Field>
         <Field id="contact-phone" label="Telefon" optional error={errors.phone}><input {...attributes('phone')} type="tel" inputMode="tel" autoComplete="tel" maxLength={30} placeholder="+387 …"/></Field>
-        <Field id="contact-message" label="Vaša poruka" wide error={errors.message}><textarea {...attributes('message',true)} rows={4} maxLength={600} placeholder="Napišite kako vam možemo pomoći…"/><span className="message-count" aria-hidden="true">{fields.message.length} / 600</span></Field>
+        <Field id="contact-message" label="Vaša poruka" wide error={errors.message}><textarea {...attributes('message',true)} rows={4} maxLength={600} placeholder="Pitanje o lokaciji, radnom vremenu ili cijenama…" aria-describedby={`contact-message-guidance${errors.message?' contact-message-error':''}`}/><p className="request-guidance" id="contact-message-guidance">Za organizacijska pitanja. Ne unosite simptome, nalaze ili druge medicinske podatke.</p><span className="message-count" aria-hidden="true">{fields.message.length} / 600</span></Field>
       </>}
     </div>
     <p className="request-delivery"><Mail size={15}/><span>Za {recipient} pripremamo e-mail koji vi pregledate i šaljete.</span></p>

@@ -75,3 +75,9 @@ Added a dedicated `#zakazivanje` section with accessible keyboard-operated tabs 
 This remains a static frontend: requests are not automatically transmitted, stored in a database or booked against a live calendar. There is no claim of real-time availability. Only the user's explicit email action hands off a prepared draft; no test email was sent. Validation covers required fields, phone/email formats, past dates, Sunday closures, Otoka's Saturday closure and Dobrinja's Saturday hours. The form appears before supplementary steps/contact cards on mobile, with matching DOM and keyboard order.
 
 Production build/TypeScript passed. Browser verification covered both form flows, review/edit, encoded draft contents, clipboard success/fallback, keyboard tabs, and responsive layouts at 320, 390, 768, 1024 and 1440px. No clipped text, broken images or page overflow. Screenshots and the check report are under /workspace/work/appointment-review/.
+
+## Canvas and editorial correction — November 2026
+
+Restored a centered 1380px canvas with 48px desktop gutters; mobile fills the viewport. Reduced hero (650px), services (355px), team (324px), section rhythm (96px) and footer spacing. The hero now uses the existing throat-examination photograph with a pale neutral wash. The final CTA uses a calm conversation from the same doctor/patient series: https://www.pexels.com/photo/a-doctor-talking-the-patient-7579831/ (Pexels license). Stock consultation subjects are not used as clinic staff profiles. Real portraits and business details remain unchanged.
+
+The booking/contact UI retains its local validation, review/edit and email-draft handoff. It never submits a booking automatically. Contact guidance restricts the free-text field to organizational questions and asks visitors not to enter symptoms, reports or medical details. No patient-data backend or persistence was added.

@@ -1,29 +1,23 @@
-# ENT homepage — local visual review
+# Dr. Gežo — canvas and editorial correction
 
-8 November 2026. Local revision only; no source push or deployment was performed. Published source HEAD remains `2b0d16dfe49154a5c7e63e2a0dfb6c2b973712cf`.
+Local review, 8 November 2026. No push, version save or deployment in this revision. The published site remains at commit `bc37197c04ced419f52bdcb7bfe02b4d09d60cf1`.
 
-| Section | Decision and visual treatment |
-| --- | --- |
-| Navigation and hero | Retained the reference's left headline, right photographic subject, facts and pill CTAs. Replaced the generic portrait with an explicitly illustrative ear examination. Adjusted the mobile frame to preserve the examination context. Navigation has a light, readable capsule over the photograph. |
-| Services | Kept the manual carousel. Five ENT-specific services; consistent image frames, restrained gradients, aligned captions, card-width navigation, visible ranges and disabled endpoint controls. Otoscopy and throat examination images are illustrative; diagnostic equipment and instruments are from the official clinic gallery. |
-| Specialties | Retained the directly scannable static grid; two columns on smaller screens. |
-| Team | Kept the carousel and authentic portraits. Wider, consistent image windows preserve faces and shoulders; qualifications and profile links remain readable. |
-| Patient convenience | Retained the static utility grid and verified clinic facts. |
-| Locations | Retained two static contact cards so both addresses and phones remain discoverable without swiping. Added clearly separated opening hours and map links. |
-| Clinic gallery | Refined into a compact manual landscape carousel. Authentic rooms, reception and ORL equipment, with the reference-inspired typographic oval aligned to the same image ratio. |
-| FAQ | Retained native, keyboard-accessible disclosure panels and a direct email link. |
-| Closing CTA | Retained the reference-aligned wellbeing photography, labeled illustrative, with a narrower four-line headline and readable telephone CTAs. |
-| Footer | Retained the oversized signature but rebuilt the contact hierarchy: clinic introduction, navigation, separate location columns, prominent phones, email, opening-hours strip and demo notice. |
+## Visual comparison
 
-## Verification
+Compared the supplied SYNORA screenshot with full-page captures of the edge-to-edge implementation before editing. Reviewed Git history: the edge-to-edge commit changed only the outer canvas; earlier carousel, form and medical-content improvements were preserved.
 
-- Production export and TypeScript passed.
-- Browser widths: 320, 390, 640, 768, 1024, 1440 and 1920 px.
-- All three carousels: next/previous controls, endpoint disabling, keyboard arrows, Home/End and consistent slide dimensions passed.
-- Real Chromium touch events verified native swiping for all three carousels at 390 px.
-- Smooth navigation and reduced-motion behavior verified.
-- Mobile menu, Escape and focus return; FAQ disclosure; local Bosnian font loading; noindex metadata and brand palette verified.
-- No broken images, failed resources, runtime errors, horizontal page overflow or clipped visible text.
-- Axe WCAG 2 A/AA and WCAG 2.1 AA rules returned no automated violations at 1440 and 390 px. Photograph overlays also received visual review; automated testing is not a full accessibility certification.
+- Restored a centered 1380px canvas, 24px top/bottom frame and 48px internal desktop gutters. Content width is 1284px. At 1920px, the canvas and components retain the same dimensions as at 1440px. Mobile naturally fills the screen.
+- Replaced the exaggerated-expression hero photograph with the existing ENT throat-examination scene. A neutral pale wash replaces the dominant blue overlay. Hero height is 650px, with a compact integrated navigation and a 70px headline.
+- Reduced desktop section rhythm from 140px to 96px, section headings from 42px to 34px, photographic services from 440px to 355px and team cards from 370px to 324px. Kept four visible desktop cards and the next-card glimpse, manual controls, touch scrolling and staggered motion with reduced-motion support.
+- Compacted specialty and utility tiles, location cards, gallery captions, FAQ and footer information columns. Retained all verified clinic information and authentic doctor portraits. Original portrait formats limit how closely the uniform studio portraits in the reference can be reproduced.
+- Replaced the framed application-style appointment card with a minimal editorial form, underline tabs, smaller fields and matching pill actions. Review/edit, validation, clipboard and email-draft behavior are preserved. Organizational-message guidance discourages medical details, with both guidance and validation errors associated with the field.
+- Replaced the extreme ear close-up in the final CTA with a calm doctor-patient conversation from the same photographed ORL visit series. On mobile the photo sits above the contact copy to keep both faces visible and avoid text crossing faces.
+- Kept the oversized DR. GEŽO signature inside the footer's content container; its type scales with that container, not the browser viewport.
 
-Final screenshots and the detailed JSON check report are retained in `/workspace/work/ent-review/`.
+## Checks
+
+Production export and TypeScript passed. Browser review covers 320, 390, 640, 768, 1024, 1440 and 1920px. All three manual carousels passed previous/next, endpoint, keyboard and Home/End checks; native touch swipes passed at 390px. Menu Escape/focus return, FAQ, images, palette and reduced-motion/smooth scrolling passed. No page overflow, missing images, failed resources, browser errors or clipped text were found. Automated axe checks at 1440 and 390px returned no violations; photographic backgrounds also received visual inspection.
+
+Booking/contact checks cover required values, phone/email formats, unavailable dates and branch hours, review/edit, correct email-draft content and recipient, clipboard fallback and keyboard tabs. No messages were sent during testing.
+
+Before/after full-page screenshots at 1440, 1920 and 390px: `/workspace/work/correction/before/` and `/workspace/work/correction/after/`.
