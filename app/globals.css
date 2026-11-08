@@ -31,7 +31,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:32px}
 body{margin:0;background:#e9eef4;color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-main{width:calc(100% - 64px);max-width:1440px;margin:32px auto;background:white;overflow:clip}
+main{width:100%;margin:0;background:white;overflow:clip}
 h1,h2,h3,h4,p{margin:0}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
