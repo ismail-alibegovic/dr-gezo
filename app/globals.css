@@ -568,3 +568,48 @@ footer{padding:22px var(--gutter) 17px;container-type:inline-size}.footer-brand-
 .footer-bottom{justify-content:space-between;padding-top:12px;font-size:9px;letter-spacing:.2px}
 @media(max-width:640px){.final-actions{flex-direction:column;align-items:stretch;max-width:none}.footer-bottom{flex-wrap:wrap;gap:4px 16px}}
 @media(min-width:641px){.footer-wordmark{line-height:.95;padding:34px 0 14px}.footer-grid{padding-top:30px}}
+
+/* Full-width page: no side frame. Content keeps a 1284px measure on wide screens. */
+body{background:#fff}
+main{width:100%;max-width:none;margin:0}
+@media(min-width:1151px){main{--gutter:max(48px,calc((100cqi - 1560px)/2))}}
+@media(min-width:901px){.hero-content{padding-right:0;max-width:calc(var(--gutter) + 640px)}}
+
+/* Logo is white on transparent: render it navy on the pale header. */
+.brand img{filter:brightness(0) invert(15%) sepia(55%) saturate(1900%) hue-rotate(195deg) brightness(.95)}
+
+/* Mobile polish: readable type, no dead space around carousels, tidy actions. */
+@media(max-width:640px){
+  .eyebrow,.hero .eyebrow,.final-content .eyebrow{font-size:10px;letter-spacing:1px}
+  .intro,.faq .intro,.appointment-copy>.intro{font-size:14px;line-height:1.65}
+  h2{font-size:29px}
+  .button,.hero .button,.final-actions .button,.request-submit{font-size:12px;min-height:46px;padding:0 18px}
+  .button.header-cta{font-size:10px;padding:0 14px;min-height:42px}
+  .hero{height:700px}
+  .hero-content{padding-top:112px}
+  .hero-foot{display:contents}
+  .hero-bottom{font-size:12px;line-height:1.55;bottom:104px;max-width:300px}
+  .hero-facts{bottom:34px;gap:24px}.hero-facts strong{font-size:26px}.hero-facts span{font-size:10px;max-width:96px}
+  .carousel-navigation{display:none}
+  .section-heading{margin-bottom:22px}
+  .carousel-bottom{margin-top:12px;justify-content:flex-start}.swipe-hint{font-size:11px;display:flex;align-items:center;gap:6px;color:var(--muted)}
+  .service-card{height:360px}.service-tag,.doctor-tag{font-size:9px;padding:6px 9px}
+  .service-caption h3{font-size:21px}.service-caption p{font-size:12px}.service-link{font-size:11px}
+  .specialty-grid>a{font-size:12px;min-height:64px}
+  .doctor-card{height:380px}.doctor-info h3{font-size:18px}.doctor-info p{font-size:12px}
+  .benefit-grid{grid-template-columns:1fr}.benefit-grid>div{font-size:13px;min-height:52px;padding:12px 14px;gap:12px}.benefit-grid svg{width:18px}
+  .location-hours{font-size:12px}.location-top{font-size:10px}.location-address{font-size:14px}.location-links>a:last-child{font-size:12px}.location-links>a:first-child{font-size:24px}
+  .gallery-caption h3{font-size:14px}.gallery-caption span{font-size:12px}
+  .request-form-heading p,.request-delivery,.request-note,.request-guidance{font-size:12px}
+  .appointment-steps h3{font-size:14px}.appointment-steps p{font-size:12px}
+  .faq summary{font-size:14px;min-height:60px}.faq details p{font-size:13px}.text-link{font-size:14px}
+  .final-cta{height:auto}
+  .final-actions{position:relative;inset:auto;margin:24px 20px 0;display:flex;flex-direction:column;align-items:stretch;max-width:none;gap:9px}
+  .final-actions .button{width:100%}
+  .final-content>p:last-child{font-size:13px}
+  .footer-kicker{font-size:9px}.footer-intro h3{font-size:18px}.footer-intro>p{font-size:12px}.footer-email{font-size:13px}
+  .footer-grid h4{font-size:10px}.footer-navigation>a{font-size:13px}.footer-location>p{font-size:13px}.footer-phone{font-size:19px}.footer-location>a:last-child{font-size:12px}
+  .footer-hours{font-size:12px}.footer-hours>span{font-size:10px}.footer-hours-note,.footer-bottom,.footer-bottom a{font-size:11px}
+}
+@media(max-width:640px){.hero-scroll{display:none}}
+@media(max-width:640px){.section .actions .button{font-size:12px;min-height:46px;padding:0 18px}}
