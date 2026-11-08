@@ -33,11 +33,11 @@ const locations = [
   {name:'Otoka', address:'Gradačačka 29a', phone:'033 526 400', tel:'+38733526400', hours:'Pon–pet 09:00–19:00 · Subotom ne radi'},
 ];
 const gallery = [
-  {image:'ent-interior.jpg', title:'ORL ordinacija', detail:'Prostor za specijalistički pregled', position:'50% 50%'},
-  {image:'clinic-room.jpg', title:'ORL dijagnostika', detail:'Prostor i oprema za specijalistički pregled', position:'50% 50%'},
-  {image:'reception.jpg', title:'Dobro došli', detail:'Recepcija poliklinike', position:'50% 50%'},
-  {image:'microscope.jpg', title:'Preciznost u detaljima', detail:'Oprema za ORL dijagnostiku', position:'42% 45%'},
-  {image:'recovery.jpg', title:'Prostor za odmor', detail:'Poliklinika Dr. Gežo', position:'50% 50%'},
+  {image:'ent-interior.jpg', title:'ORL ordinacija', position:'50% 50%'},
+  {image:'clinic-room.jpg', title:'Prostor za ORL dijagnostiku', position:'50% 50%'},
+  {image:'reception.jpg', title:'Recepcija poliklinike', position:'50% 50%'},
+  {image:'microscope.jpg', title:'Operacioni mikroskop', position:'42% 45%'},
+  {image:'recovery.jpg', title:'Prostor za odmor', position:'50% 50%'},
 ];
 const faqs = [
   ['Kako zakazati pregled?', 'Pozovite poslovnicu Dobrinja na +387 33 450 102 ili poslovnicu Otoka na +387 33 526 400. Naš tim će vam pomoći da dogovorite termin.'],
@@ -47,11 +47,12 @@ const faqs = [
   ['Gdje mogu pogledati cijene usluga?', 'Cjenovnik je dostupan na službenoj stranici drgezo.ba/cjenovnik. Za informacije o konkretnoj usluzi pozovite polikliniku.'],
 ];
 
-function Button({children, href='#zakazivanje', secondary=false}: {children:ReactNode; href?:string; secondary?:boolean}) {
-  return <a className={`button${secondary?' button-secondary':''}`} href={href}>{secondary?<ArrowUpRight size={14}/>:<Plus size={14}/>}<span>{children}</span></a>;
+function Button({children, href='#zakazivanje', variant='dark', icon='plus'}: {children:ReactNode; href?:string; variant?:'dark'|'light'|'outline'|'ghost'; icon?:'plus'|'arrow'|'phone'}) {
+  const Icon = icon==='plus'?Plus:icon==='phone'?Phone:ArrowUpRight;
+  return <a className={`button button-${variant}`} href={href}><Icon size={14} strokeWidth={1.8}/><span>{children}</span></a>;
 }
 function MapLink({address, children}: {address:string; children:ReactNode}) {
-  return <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Poliklinika Dr Gezo '+address+' Sarajevo')}`} target="_blank" rel="noreferrer">{children}<ArrowUpRight size={15}/></a>;
+  return <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Poliklinika Dr Gezo '+address+' Sarajevo')}`} target="_blank" rel="noreferrer">{children}<ArrowUpRight size={14}/></a>;
 }
 
 export default function Home() {
@@ -69,67 +70,108 @@ export default function Home() {
   return (
     <main>
       <a className="skip-link" href="#o-nama">Preskoči na sadržaj</a>
-      <div className="hero-shell" id="pocetna">
-        <header>
+
+      <div className="hero" id="pocetna">
+        <div className="hero-photo"><img src="/images/throat-examination.jpg" width={1800} height={1200} alt="Ljekarica tokom specijalističkog pregleda grla" fetchPriority="high"/></div>
+        <div className="hero-tint" aria-hidden="true"/>
+        <header className="site-header">
           <a className="brand" href="#pocetna" aria-label="Poliklinika Dr. Gežo — početna"><img src="/images/logo.png" width={250} height={63} alt="Poliklinika Dr. Gežo"/></a>
           <nav id="main-navigation" ref={navigation} className={menu?'open':''} aria-label="Glavna navigacija">
-            {[['Početna','pocetna'],['O nama','o-nama'],['Usluge','usluge'],['Naš tim','tim'],['Lokacije','lokacije'],['Kontakt','zakazivanje']].map(([text, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{text}</a>)}
+            {[['Početna','pocetna'],['Usluge','o-nama'],['Specijalnosti','usluge'],['Naš tim','tim'],['Lokacije','lokacije'],['Kontakt','zakazivanje']].map(([text, id]) => <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>{text}</a>)}
           </nav>
-          <a className="button header-cta" href="#zakazivanje">ZAKAŽITE PREGLED<ArrowUpRight size={13}/></a>
-          <button ref={menuButton} className="mobile-menu" aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>{menu?<X size={22}/>:<Menu size={22}/>}</button>
+          <a className="header-cta" href="#zakazivanje">ZAKAŽITE PREGLED</a>
+          <button ref={menuButton} className="menu-toggle" aria-label={menu?'Zatvori meni':'Otvori meni'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)}>{menu?<X size={20}/>:<Menu size={20}/>}</button>
         </header>
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-photo"><img src="/images/throat-examination.jpg" width={1800} height={1200} alt="Ljekarica tokom specijalističkog pregleda grla" fetchPriority="high"/></div>
-          <div className="hero-wash"/>
-          <div className="hero-content"><p className="eyebrow">SPECIJALISTIČKA ORL POLIKLINIKA · SARAJEVO</p><h1 id="hero-title">BRIGA ZA VAŠ<br/>SLUH, DAH<br/>I GLAS.</h1><div className="actions"><Button>ZAKAŽITE PREGLED</Button><Button secondary href="#tim">UPOZNAJTE NAŠ TIM</Button></div></div>
-          <div className="hero-foot"><p className="hero-bottom">Za sve ono što čujete, udahnete i izgovorite.<br/>Iskustvo kojem vjerujete. Pažnja posvećena vama.</p><div className="hero-facts"><div><strong>1997.</strong><span>Početak naše priče</span></div><div><strong>2</strong><span>Adrese u Sarajevu</span></div><div><strong>ORL</strong><span>Naša specijalnost</span></div></div><a className="hero-scroll" href="#o-nama" aria-label="Saznajte više o poliklinici"><ArrowDown size={17}/></a></div>
+        <section className="hero-body" aria-labelledby="hero-title">
+          <div className="hero-copy">
+            <p className="kicker">SPECIJALISTIČKA ORL POLIKLINIKA · SARAJEVO</p>
+            <h1 id="hero-title">BRIGA ZA VAŠ<br/><span className="hero-chip" aria-hidden="true"><img src="/images/otoscopy.jpg" width={1800} height={1200} alt=""/></span>SLUH, DAH<br/>I GLAS.</h1>
+            <div className="actions"><Button variant="light">ZAKAŽITE PREGLED</Button><Button variant="ghost" icon="arrow" href="#tim">UPOZNAJTE NAŠ TIM</Button></div>
+          </div>
+          <dl className="hero-stats">
+            <div><dt>Početak naše priče</dt><dd>1997.</dd></div>
+            <div><dt>Adrese u Sarajevu</dt><dd>2</dd></div>
+            <div><dt>Radnih dana sedmično</dt><dd>6</dd></div>
+            <div><dt>Naša specijalnost</dt><dd>ORL</dd></div>
+          </dl>
+          <div className="hero-foot">
+            <p>Za sve ono što čujete, udahnete i izgovorite. Specijalistički pregledi, dijagnostika i liječenje bolesti uha, nosa i grla — s iskustvom kojem vjerujete.</p>
+            <a className="hero-scroll" href="#o-nama" aria-label="Saznajte više o poliklinici"><ArrowDown size={16}/></a>
+          </div>
         </section>
       </div>
 
-      <Carousel id="o-nama" kind="services" label="Medicinske usluge" title={<>Sve što vam treba za<br/>zdravlje uha, nosa i grla.</>} intro={<>Od prvog razgovora do dijagnoze i liječenja. ORL usluge u Sarajevu<br className="desktop-break"/> pružamo od 12. septembra 1997. godine, s pažnjom prema svakom pacijentu.</>}>
-        {services.map((service, index) => <a key={service.title} className="service-card" href={official+service.href} target="_blank" rel="noreferrer" aria-label={`${service.title} — detalji na službenoj stranici`}>
+      <Carousel id="o-nama" kind="services" label="Medicinske usluge" title={<>Sve što vam treba za<br/>zdravlje uha, nosa i grla.</>} intro="Od prvog razgovora do dijagnoze i liječenja. ORL usluge u Sarajevu pružamo od 1997. godine, s pažnjom prema svakom pacijentu.">
+        {services.map(service => <a key={service.title} className="service-card" href={official+service.href} target="_blank" rel="noreferrer" aria-label={`${service.title} — detalji na službenoj stranici`}>
           <img src={`/images/${service.image}`} width={800} height={533} style={{objectPosition:service.position}} alt={service.alt} loading="lazy"/>
-          <div className="service-shade"/><span className="service-tag">{String(index+1).padStart(2,'0')} / {service.category}</span>
-          <div className="service-caption"><h3>{service.title}</h3><p>{service.copy}</p><span className="service-link">Saznajte više<ArrowUpRight size={17}/></span></div>
+          <div className="card-caption"><h3>{service.title}</h3><p>{service.copy}</p></div>
         </a>)}
       </Carousel>
 
       <section className="section specialties" id="usluge" aria-labelledby="services-title">
-        <div className="section-heading"><div className="heading-group"><p className="eyebrow blue">USMJERENI NA ONO ŠTO JE VAŽNO</p><h2 id="services-title">Stručna briga.<br/>Za svaki aspekt ORL zdravlja.</h2><p className="intro">Dijagnostika i liječenje bolesti uha, nosa i grla.<br className="desktop-break"/> Jasan plan, prilagođen vašim potrebama.</p></div><div className="actions"><Button>ZAKAŽITE PREGLED</Button><Button secondary href={`${official}/cjenovnik`}>CJENOVNIK</Button></div></div>
-        <div className="specialty-grid">{specialties.map(([name,Icon]) => <a href={`${official}/usluge/ambulantne-usluge`} key={name} target="_blank" rel="noreferrer"><span className="specialty-icon"><Icon size={23} strokeWidth={1.5}/></span><span>{name}</span><ArrowUpRight className="specialty-arrow" size={14}/></a>)}</div>
+        <div className="section-heading"><div className="heading-group"><h2 id="services-title">Stručna briga za<br/>svaki aspekt ORL zdravlja.</h2><p className="intro">Dijagnostika i liječenje bolesti uha, nosa i grla — jasan plan, prilagođen vašim potrebama.</p></div><div className="actions"><Button>ZAKAŽITE PREGLED</Button><Button variant="outline" icon="arrow" href={`${official}/cjenovnik`}>CJENOVNIK</Button></div></div>
+        <div className="specialty-grid">{specialties.map(([name,Icon]) => <a href={`${official}/usluge/ambulantne-usluge`} key={name} target="_blank" rel="noreferrer"><span className="tile-icon"><Icon size={18} strokeWidth={1.6}/></span><span>{name}</span></a>)}</div>
       </section>
 
-      <Carousel id="tim" kind="doctors" label="Medicinski tim" title={<>Upoznajte<br/>naš medicinski tim.</>} intro={<>Iskustvo, znanje i pažnja koja počinje slušanjem.<br className="desktop-break"/> Ljudi kojima povjeravate svoje ORL zdravlje.</>}>
+      <Carousel id="tim" kind="doctors" label="Medicinski tim" title={<>Upoznajte naš<br/>medicinski tim.</>} intro="Iskustvo, znanje i pažnja koja počinje slušanjem. Ljudi kojima povjeravate svoje ORL zdravlje.">
         {doctors.map((doctor,index) => <a key={doctor.name} className="doctor-card" href={`${official}/nas-tim/doktori`} target="_blank" rel="noreferrer" aria-label={`${doctor.name} — biografija na službenoj stranici`}>
-          <div className="doctor-photo"><img src={`/images/${doctor.image}`} width={480} height={index>=3?640:300} alt={doctor.name} style={{objectPosition:doctor.position}} loading="lazy"/><span className="doctor-tag">{index===4?'ANESTEZIOLOGIJA':'MEDICINSKI TIM'}</span></div>
-          <div className="doctor-info"><h3>{doctor.name}</h3><p>{doctor.role}</p><span>Upoznajte doktora<ArrowUpRight size={17}/></span></div>
+          <img src={`/images/${doctor.image}`} width={480} height={index>=3?640:300} alt={doctor.name} style={{objectPosition:doctor.position}} loading="lazy"/>
+          <span className="card-tag">{index===4?'ANESTEZIOLOGIJA':'ORL'}</span>
+          <div className="card-caption"><h3>{doctor.name}</h3><p>{doctor.role}</p><span className="card-arrow" aria-hidden="true"><ArrowUpRight size={13}/></span></div>
         </a>)}
       </Carousel>
 
-      <section className="section approach" aria-labelledby="approach-title"><div className="section-heading"><div><p className="eyebrow blue">PAŽNJA U SVAKOM KORAKU</p><h2 id="approach-title">Zdravstvena briga<br/>koja poštuje vaše vrijeme.</h2><p className="intro">Od zakazivanja do razgovora s ljekarom.<br/>Tu smo da vaš dolazak učinimo jednostavnijim.</p></div></div>
-        <div className="benefit-grid">{benefits.map(([name,Icon]) => <div key={name}><Icon size={19} strokeWidth={1.5}/><span>{name}</span></div>)}</div>
+      <section className="section benefits" aria-labelledby="approach-title">
+        <div className="section-heading"><div className="heading-group"><h2 id="approach-title">Zdravstvena briga<br/>koja poštuje vaše vrijeme.</h2></div></div>
+        <div className="benefit-grid">{benefits.map(([name,Icon]) => <div key={name}><Icon size={16} strokeWidth={1.6}/><span>{name}</span></div>)}</div>
       </section>
 
-      <section className="section locations" id="lokacije" aria-labelledby="locations-title"><div className="section-heading"><div><p className="eyebrow blue">BLIZU VAS</p><h2 id="locations-title">Jedna posvećenost.<br/>Dvije adrese u Sarajevu.</h2><p className="intro">Odaberite lokaciju koja vam odgovara.<br/>Za termin nas kontaktirajte telefonom.</p></div></div>
-        <div className="location-grid">{locations.map((location,index) => <article key={location.name}><div className="location-top"><span>0{index+1} / SARAJEVO</span><MapPin size={19} strokeWidth={1.3}/></div><h3>{location.name}</h3><p className="location-address">{location.address}</p><p className="location-hours"><Clock size={14}/>{location.hours}</p><div className="location-links"><a href={`tel:${location.tel}`} aria-label={`Pozovite ${location.name}: ${location.phone}`}>{location.phone}<ArrowUpRight size={21}/></a><MapLink address={location.address}>Prikaži na mapi</MapLink></div></article>)}</div>
+      <section className="section locations" id="lokacije" aria-labelledby="locations-title">
+        <div className="section-heading"><div className="heading-group"><h2 id="locations-title">Jedna posvećenost.<br/>Dvije adrese u Sarajevu.</h2><p className="intro">Odaberite lokaciju koja vam odgovara. Za termin nas kontaktirajte telefonom ili putem forme.</p></div></div>
+        <div className="location-grid">
+          {locations.map((location,index) => <article key={location.name}>
+            <div className="location-head"><span className="tile-icon"><MapPin size={18} strokeWidth={1.6}/></span><div><h3>{location.name}</h3><p>{location.address}, Sarajevo</p></div><span className="location-index">0{index+1}</span></div>
+            <p className="location-hours"><Clock size={14}/>{location.hours}</p>
+            <div className="location-links"><a href={`tel:${location.tel}`} aria-label={`Pozovite ${location.name}: ${location.phone}`}>{location.phone}</a><MapLink address={location.address}>Prikaži na mapi</MapLink></div>
+          </article>)}
+          <article className="location-contact">
+            <div className="location-head"><span className="tile-icon"><Mail size={18} strokeWidth={1.6}/></span><div><h3>Pišite nam</h3><p>Odgovaramo u radnom vremenu.</p></div></div>
+            <p className="location-hours"><CalendarDays size={14}/>Zahtjev za pregled pripremite online</p>
+            <div className="location-links"><a href="mailto:info@drgezo.ba">info@drgezo.ba</a><a href="#zakazivanje">Zakažite<ArrowUpRight size={14}/></a></div>
+          </article>
+        </div>
       </section>
 
-      <Carousel id="prostori" kind="gallery" label="Prostori i oprema poliklinike" title={<>Prostor za povjerenje.<br/>Pažnja u svakom detalju.</>} intro="Upoznajte naše ordinacije i opremu za ORL preglede i dijagnostiku.">
-        {gallery.map(item => <a className="gallery-card" key={item.image} href={`${official}/foto-galerija`} target="_blank" rel="noreferrer"><div className="gallery-photo"><img src={`/images/${item.image}`} width={800} height={533} style={{objectPosition:item.position}} alt={item.title} loading="lazy"/></div><div className="gallery-caption"><h3>{item.title}</h3><span>{item.detail}</span></div></a>)}
+      <Carousel id="prostori" kind="gallery" label="Prostori i oprema poliklinike" title={<>Prostor osmišljen<br/>za vašu udobnost.</>} intro="Upoznajte naše ordinacije i opremu za ORL preglede i dijagnostiku.">
+        {gallery.flatMap((item,index) => {
+          const card = <a className="gallery-card" key={item.image} href={`${official}/foto-galerija`} target="_blank" rel="noreferrer" aria-label={`${item.title} — foto galerija`}><img src={`/images/${item.image}`} width={800} height={533} style={{objectPosition:item.position}} alt={item.title} loading="lazy"/></a>;
+          return index===1 ? [<div className="gallery-note" key="note"><p>Savremena<br/>ORL oprema</p></div>, card] : [card];
+        })}
       </Carousel>
 
       <Appointment/>
 
-      <section className="section faq" aria-labelledby="faq-title"><div><p className="eyebrow blue">DOBRO JE ZNATI</p><h2 id="faq-title">Česta pitanja.</h2><p className="intro">Trebate dodatne informacije?<br/>Pozovite nas. Rado ćemo vam pomoći.</p><a className="text-link" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={16}/></a></div><div className="faq-list">{faqs.map(([question,answer],index) => <details key={question}><summary><span className="faq-number">0{index+1}</span><span>{question}</span><ChevronDown size={14}/></summary><p>{answer}</p></details>)}</div></section>
+      <section className="section faq" aria-labelledby="faq-title">
+        <div className="faq-intro"><h2 id="faq-title">Česta pitanja</h2><p className="intro">Trebate dodatne informacije? Pozovite nas ili pišite — rado ćemo vam pomoći.</p><a className="text-link" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={14}/></a></div>
+        <div className="faq-list">{faqs.map(([question,answer]) => <details key={question}><summary><span>{question}</span><ChevronDown size={16}/></summary><p>{answer}</p></details>)}</div>
+      </section>
 
-      <section className="final-cta" id="kontakt" aria-labelledby="contact-title"><div className="final-photo"><img src="/images/ent-conversation.jpg" width={1800} height={1200} alt="Smiren razgovor ljekarice i pacijenta prije pregleda" loading="lazy"/></div><div className="final-shade"/><div className="final-content"><p className="eyebrow">TU SMO ZA VAS</p><h2 id="contact-title">VAŠE ZDRAVLJE<br/>ZASLUŽUJE<br/>POSEBNU<br/>PAŽNJU.</h2><p>Prvi korak je razgovor.<br/>Javite nam se i dogovorite svoj pregled.</p></div><div className="final-actions"><Button href="#zakazivanje">ZAKAŽITE PREGLED</Button><Button secondary href="tel:+38733450102">POZOVITE DOBRINJU</Button><Button secondary href="tel:+38733526400">POZOVITE OTOKU</Button></div></section>
+      <section className="final-cta" id="kontakt" aria-labelledby="contact-title">
+        <div className="final-photo"><img src="/images/wellbeing-wide.jpg" width={1800} height={1200} alt="Žena uživa u svježem zraku u prirodi" loading="lazy"/></div>
+        <div className="final-inner">
+          <div className="final-copy"><h2 id="contact-title">VAŠE ZDRAVLJE<br/>ZASLUŽUJE<br/>POSEBNU PAŽNJU.</h2><p>Prvi korak je razgovor. Javite nam se i dogovorite svoj pregled u jednoj od naših poslovnica.</p></div>
+          <div className="final-actions"><Button variant="light" href="#zakazivanje">ZAKAŽITE PREGLED</Button><Button variant="ghost" icon="phone" href="tel:+38733450102">DOBRINJA · 033 450 102</Button><Button variant="ghost" icon="phone" href="tel:+38733526400">OTOKA · 033 526 400</Button></div>
+        </div>
+      </section>
 
-      <footer>
-        <div className="footer-brand-row"><span className="footer-kicker">POLIKLINIKA DR. GEŽO · SARAJEVO</span><a className="back-to-top" href="#pocetna" aria-label="Nazad na vrh"><ArrowUp size={19}/></a></div>
-        <div className="footer-wordmark" aria-label="Dr. Gežo">DR. GEŽO</div>
-        <div className="footer-grid"><div className="footer-intro"><h3>Stručnost koja sluša.<br/>Briga koja traje.</h3><p>Specijalistička poliklinika za zdravlje <br/>uha, nosa i grla.</p><a className="footer-email" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={17}/></a></div><div className="footer-navigation"><h4>POLIKLINIKA</h4><a href="#o-nama">O nama</a><a href="#usluge">Naše usluge</a><a href="#tim">Medicinski tim</a><a href="#prostori">Prostori poliklinike</a><a href="#zakazivanje">Zakažite pregled</a><a href={`${official}/cjenovnik`}>Cjenovnik</a></div>{locations.map(location => <div className="footer-location" key={location.name}><h4>{location.name.toUpperCase()}</h4><p>{location.address}<br/>71000 Sarajevo</p><a className="footer-phone" href={`tel:${location.tel}`}>{location.phone}<ArrowUpRight size={18}/></a><MapLink address={location.address}>Kako do nas</MapLink></div>)}</div>
-        <div className="footer-hours"><span><Clock size={16}/>RADNO VRIJEME</span><p>Pon–pet <strong>09:00–19:00</strong></p><p>Subota · Dobrinja <strong>09:00–17:00</strong></p><p className="footer-hours-note">Otoka ne radi subotom.</p></div>
-        <div className="footer-bottom"><span>© 2026 Poliklinika Dr. Gežo · Sarajevo</span><a href={official} target="_blank" rel="noreferrer">Službena stranica<ArrowUpRight size={12}/></a></div>
+      <footer className="site-footer">
+        <div className="footer-wordmark" aria-hidden="true">DR. GEŽO</div>
+        <div className="footer-grid">
+          <div className="footer-intro"><p>Specijalistička poliklinika za zdravlje uha, nosa i grla. Iskustvo od 1997. godine, dvije adrese u Sarajevu.</p><a href="mailto:info@drgezo.ba">info@drgezo.ba</a></div>
+          <div><h4>Poliklinika</h4><a href="#o-nama">Usluge</a><a href="#usluge">Specijalnosti</a><a href="#tim">Medicinski tim</a><a href="#prostori">Prostori</a><a href="#zakazivanje">Zakažite pregled</a><a href={`${official}/cjenovnik`}>Cjenovnik</a></div>
+          {locations.map(location => <div key={location.name}><h4>{location.name}</h4><p>{location.address}<br/>71000 Sarajevo</p><a href={`tel:${location.tel}`}>{location.phone}</a><p>{location.hours}</p><MapLink address={location.address}>Kako do nas</MapLink></div>)}
+        </div>
+        <div className="footer-bottom"><span>© 2026 Poliklinika Dr. Gežo · Sarajevo</span><a href={official} target="_blank" rel="noreferrer">Službena stranica<ArrowUpRight size={12}/></a><a href="#pocetna" className="back-to-top">Nazad na vrh<ArrowUp size={12}/></a></div>
       </footer>
     </main>
   );
