@@ -63,3 +63,7 @@ Inter is self-hosted as Latin and Latin Extended WOFF2 fonts; the SIL Open Font 
 ## Client annotation corrections — 8 November 2026
 
 Replaced the outdoor closing image with an ear examination (Pexels photo 5206942, https://www.pexels.com/photo/a-doctor-doing-an-ear-examination-5206942/). The gallery's decorative text tile is now an authentic clinic-room photograph, with all five gallery items using the same photo-card structure. Removed visible illustration/provenance notices and the footer's independent-demo statement as explicitly requested. Retained descriptive image alt text and noindex metadata. Verified the corrections at 390, 1237 and 1440px, including image loading, gallery controls and page overflow.
+
+## Card polish and motion
+
+Services now have refined translucent category labels, clearer captions, rounded directional actions and a subtle lift/image treatment on pointer hover. Team cards use lighter information panels, aligned names and qualifications, fine borders and matching profile actions. Both sections receive a one-time staggered fade/rise reveal using IntersectionObserver and compositor animations. Reduced-motion preferences skip reveals and cancel active animations; no autoplay is introduced. Verified reveal timing and hover states at 1237 and 390px, plus the existing seven-width interaction and accessibility checks.

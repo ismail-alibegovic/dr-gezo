@@ -47,6 +47,41 @@ export default function Carousel({id, title, intro, label, kind, children}: Prop
     return () => {observer.disconnect(); el.removeEventListener('scroll', update); cancelAnimationFrame(frame);};
   }, [measure]);
 
+  useEffect(() => {
+    const el = track.current;
+    if (!el || kind === 'gallery' || !('IntersectionObserver' in window)) return;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const animations = new Set<Animation>();
+    let played = false;
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting) || played || motion.matches) return;
+      played = true;
+      observer.disconnect();
+      Array.from(el.children).forEach((card, index) => {
+        const animation = card.animate(
+          [{opacity: 0, transform: 'translateY(18px)'}, {opacity: 1, transform: 'translateY(0)'}],
+          {duration: 620, delay: Math.min(index, 3) * 75, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards'},
+        );
+        animations.add(animation);
+        animation.onfinish = () => animations.delete(animation);
+      });
+    }, {threshold: .12});
+    function onMotionChange() {
+      if (motion.matches) {
+        observer.disconnect();
+        animations.forEach(animation => animation.cancel());
+        animations.clear();
+      } else if (!played) observer.observe(el!);
+    }
+    if (!motion.matches) observer.observe(el);
+    motion.addEventListener('change', onMotionChange);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener('change', onMotionChange);
+      animations.forEach(animation => animation.cancel());
+    };
+  }, [kind]);
+
   function move(direction: number) {
     const el = track.current;
     const item = el?.firstElementChild as HTMLElement | null;
