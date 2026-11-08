@@ -157,7 +157,7 @@ export default function Home() {
       </section>
 
       <section className="final-cta" id="kontakt" aria-labelledby="contact-title">
-        <div className="final-photo"><img src="/images/wellbeing-wide.jpg" width={1800} height={1200} alt="Žena uživa u svježem zraku u prirodi" loading="lazy"/></div>
+        <div className="final-photo"><img src="/images/ent-conversation.jpg" width={1800} height={1200} alt="Ljekarica u razgovoru s pacijentom prije ORL pregleda" loading="lazy"/></div>
         <div className="final-inner">
           <div className="final-copy"><h2 id="contact-title">VAŠE ZDRAVLJE<br/>ZASLUŽUJE<br/>POSEBNU PAŽNJU.</h2><p>Prvi korak je razgovor. Javite nam se i dogovorite svoj pregled u jednoj od naših poslovnica.</p></div>
           <div className="final-actions"><Button variant="light" href="#zakazivanje">ZAKAŽITE PREGLED</Button><Button variant="ghost" icon="phone" href="tel:+38733450102">DOBRINJA · 033 450 102</Button><Button variant="ghost" icon="phone" href="tel:+38733526400">OTOKA · 033 526 400</Button></div>
