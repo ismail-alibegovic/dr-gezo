@@ -48,6 +48,26 @@ export default function Carousel({id, title, intro, label, kind, children}: Prop
   }, [measure]);
 
 
+  useEffect(() => {
+    const el = track.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches) return;
+    const animations: Animation[] = [];
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      Array.from(el.children).forEach((card, index) => {
+        animations.push(card.animate(
+          [{opacity: 0, transform: 'translateY(10px)'}, {opacity: 1, transform: 'none'}],
+          {duration: 1000, delay: Math.min(index, 4) * 110, easing: 'cubic-bezier(.25,.46,.45,.94)', fill: 'backwards'},
+        ));
+      });
+    }, {threshold: .2});
+    observer.observe(el);
+    return () => {observer.disconnect(); animations.forEach(animation => animation.cancel());};
+  }, []);
+
   function move(direction: number) {
     const el = track.current;
     const item = el?.firstElementChild as HTMLElement | null;
