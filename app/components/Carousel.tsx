@@ -1,7 +1,7 @@
 'use client';
 
 import {Children, useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode} from 'react';
-import {ArrowLeft, ArrowRight} from 'lucide-react';
+import {ChevronLeft, ChevronRight, ArrowRight} from 'lucide-react';
 
 type Props = {
   id: string;
@@ -109,8 +109,8 @@ export default function Carousel({id, title, intro, label, kind, children}: Prop
         <div className="carousel-navigation">
           <span className="carousel-count" aria-hidden="true">{String(position.first).padStart(2, '0')}<span>—{String(position.last).padStart(2, '0')} / {String(total).padStart(2, '0')}</span></span>
           <div className="arrows">
-            <button type="button" aria-label={`Prethodno — ${label}`} aria-controls={`${id}-track`} disabled={!position.previous} onClick={() => move(-1)}><ArrowLeft size={18} strokeWidth={1.5}/></button>
-            <button type="button" aria-label={`Sljedeće — ${label}`} aria-controls={`${id}-track`} disabled={!position.next} onClick={() => move(1)}><ArrowRight size={18} strokeWidth={1.5}/></button>
+            <button type="button" aria-label={`Prethodno — ${label}`} aria-controls={`${id}-track`} disabled={!position.previous} onClick={() => move(-1)}><ChevronLeft size={15} strokeWidth={1.5}/></button>
+            <button type="button" aria-label={`Sljedeće — ${label}`} aria-controls={`${id}-track`} disabled={!position.next} onClick={() => move(1)}><ChevronRight size={15} strokeWidth={1.5}/></button>
           </div>
         </div>
       </div>

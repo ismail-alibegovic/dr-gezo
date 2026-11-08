@@ -394,3 +394,95 @@ footer{background:#203f83;color:white;padding:30px var(--gutter) 24px}
  html,.carousel-track{scroll-behavior:auto!important}
  *,*::before,*::after{transition:none!important;animation:none!important}
 }
+
+/* Reference refinement: one compact control system and quieter editorial cards. */
+.button{min-height:40px;padding:0 17px;border-radius:999px;background:var(--ink);border-color:var(--ink);font-size:9px;gap:7px}
+.button svg{width:12px;height:12px}
+.button:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-1px)}
+.button-secondary{background:transparent;color:var(--ink);border-color:#172e5840}
+.button-secondary:hover{background:#f1f6fb;color:var(--ink);border-color:#172e5880}
+.hero .button,.final-actions .button{background:var(--ink);border-color:var(--ink);color:white}
+.hero .button:hover,.final-actions .button:hover{background:var(--blue);border-color:var(--blue);color:white}
+.hero .button-secondary,.final-actions .button-secondary{background:#ffffff0a;border-color:#ffffff80;color:white}
+.hero .button-secondary:hover,.final-actions .button-secondary:hover{background:#ffffff20;border-color:white}
+header{height:72px;background:transparent;gap:22px}
+.hero::after{content:'';position:absolute;inset:0 0 auto;height:132px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#e9eef4fa 0%,#e9eef4e8 44%,#e9eef400 100%)}
+.brand{width:138px}.brand img{filter:none}
+nav{padding:0;gap:24px;background:transparent;border:0;border-radius:0;backdrop-filter:none;font-size:10px}
+.header-cta{min-height:34px;font-size:8px;padding:0 15px;gap:8px}
+.hero-content{padding-top:155px}.hero h1{font-size:80px;letter-spacing:-4px;line-height:1}
+.section-heading{margin-bottom:28px}
+.carousel-count,.carousel-meter{display:none}
+.arrows{gap:8px}.arrows button{height:58px;width:44px;border:1px solid #e5eaf0;border-radius:999px;color:#64738a;background:white}
+.arrows button:disabled{opacity:.42}.arrows button svg{width:15px;height:15px;stroke-width:1.4}
+.carousel-bottom{margin-top:0;min-height:0}
+.service-card{border-radius:6px;height:440px}
+.service-shade{background:linear-gradient(0deg,#172e58f5 0%,#3156a3c7 25%,#3156a366 43%,transparent 67%)}
+.service-tag{font-size:7px;letter-spacing:.35px;padding:5px 8px;top:13px;left:13px;border:0;backdrop-filter:none}
+.service-caption{left:18px;right:18px;bottom:17px}
+.service-caption h3{font-size:20px;font-weight:400;line-height:1.16;min-height:47px}
+.service-caption p{font-size:10px;line-height:1.65;min-height:49px;margin-top:6px}
+.service-link{font-size:9px;min-height:30px;margin-top:10px;padding-top:10px;border-color:#ffffff30}
+.service-link svg{width:12px;height:12px;padding:4px;background:transparent;border-color:#ffffff50}
+.specialty-grid>a{min-height:76px;border-color:transparent;border-radius:5px;background:#f5f6f8}
+.specialty-icon{height:52px;width:42px}.specialty-icon svg{width:20px;height:20px}
+.doctor-card{position:relative;height:410px;border:0;border-radius:6px;background:#dce6f1;box-shadow:none}
+.doctor-photo{height:calc(100% - 57px);aspect-ratio:auto;border:0}
+.doctor-photo img{object-position:center top}
+.doctor-tag{font-size:7px;padding:5px 7px;left:12px;top:12px;border:0;backdrop-filter:none}
+.doctor-info{position:absolute;inset:auto 0 0;min-height:126px;padding:28px 16px 14px;color:white;background:linear-gradient(0deg,#274977fa 0%,#315b89e8 62%,#547da980 100%);backdrop-filter:blur(7px)}
+.doctor-info h3{font-size:17px;font-weight:400;min-height:42px;line-height:1.22;letter-spacing:-.45px;padding-right:16px}
+.doctor-info p{font-size:10px;line-height:1.5;color:#f0f5fc;min-height:30px;margin:4px 22px 0 0}
+.doctor-info>span{position:absolute;right:12px;bottom:13px;min-height:0;border:0;padding:0;margin:0;font-size:0;color:var(--blue)}
+.doctor-info>span svg{width:12px;height:12px;padding:6px;border:0;background:white;color:var(--blue)}
+.faq-number{display:none}.faq summary{min-height:58px;padding:15px 0;gap:12px;font-size:11px}
+.faq summary>span:nth-child(2){flex:1}.faq details[open] summary svg{transform:rotate(180deg)}
+.faq details p{padding:0 22px 20px 0}.faq-list{border-top:0}
+.footer-wordmark{font-size:clamp(70px,19.7vw,284px);font-weight:600;letter-spacing:-.075em;line-height:1.15;padding:18px 0 36px;margin:0;white-space:nowrap}
+.footer-grid{border:0;padding-top:12px;gap:44px}.footer-intro h3{font-size:16px;letter-spacing:-.4px}
+.footer-intro>p{font-size:10px}.footer-grid h4{font-size:8px;letter-spacing:1px}.footer-location>p{font-size:11px}.footer-navigation>a{font-size:10px}.footer-phone{font-size:20px;margin-top:15px}.footer-email{font-size:12px;max-width:190px;margin-top:15px}
+.footer-hours{border-bottom:0;font-size:9px}.footer-kicker{font-size:8px}.back-to-top{width:40px;height:40px}
+.request-submit{width:fit-content;min-height:44px;border-radius:999px;justify-content:center;font-size:9px;padding:0 18px;gap:12px}
+.request-preview-actions{justify-content:flex-start;flex-wrap:wrap;gap:8px;margin-top:12px}
+.request-preview-actions .button{border:1px solid #172e5840;background:transparent;color:var(--ink);padding:0 13px;min-height:40px;font-size:9px}
+.mail-draft-link>span{flex:initial;text-align:center}
+@media(hover:hover) and (pointer:fine){
+ .service-card:hover,.doctor-card:hover{transform:translateY(-3px);box-shadow:0 6px 14px #172e5810}
+ .doctor-card:hover .doctor-info h3{color:white}
+ .doctor-card:hover .doctor-info>span svg{background:white;color:var(--blue)}
+}
+@media(max-width:1150px){
+ .brand{width:128px}nav{gap:18px;font-size:9px}.header-cta{padding:0 12px;font-size:7px}
+ .hero h1{font-size:66px}.service-card{height:410px}.service-caption h3{font-size:19px}.doctor-card{height:395px}.doctor-info h3{font-size:16px}.doctor-info p{font-size:9px}
+}
+@media(max-width:900px){
+ .mobile-menu{color:var(--ink);border-color:#172e5830;background:#ffffff50}
+ .header-cta{min-height:40px}.arrows button{width:44px;height:54px}
+ .hero h1{font-size:62px}.doctor-card{height:365px}.doctor-info{padding:22px 14px 13px;min-height:124px}.doctor-info h3{font-size:16px}
+ .footer-wordmark{font-size:20vw}.footer-grid{gap:36px 50px}
+}
+@media(max-width:640px){
+ header{height:76px;gap:9px}.brand{width:125px}.header-cta{min-height:44px;padding:0 11px;font-size:7px}
+ .hero-content{padding-top:137px}.hero h1{font-size:clamp(40px,11vw,65px);letter-spacing:-2px;line-height:1}
+ .hero .button,.button{min-height:44px;font-size:8px;padding:0 13px;gap:6px}
+ .carousel-navigation{justify-content:flex-end;margin-top:17px}.arrows button{height:50px;width:44px}
+ .service-card{height:395px;border-radius:6px}.service-caption h3{font-size:21px;min-height:49px}.service-caption p{font-size:11px;min-height:52px}
+ .service-shade{background:linear-gradient(0deg,#172e58f5 0%,#3156a3cc 27%,#3156a359 46%,transparent 68%)}
+ .service-tag{font-size:7px;padding:5px 8px}.service-link{font-size:9px}
+ .carousel-bottom{margin-top:12px}.swipe-hint{font-size:8px}
+ .doctor-card{height:390px}.doctor-photo{height:calc(100% - 57px)}.doctor-info{padding:26px 16px 14px;min-height:128px}.doctor-info h3{font-size:18px;min-height:44px}.doctor-info p{font-size:10px;min-height:30px}.doctor-info>span{margin:0;min-height:0;padding:0;font-size:0}
+ .faq summary{font-size:12px;min-height:60px}.faq details p{padding-left:0}
+ .footer-wordmark{font-size:19.9vw;line-height:1.25;padding:22px 0 30px;letter-spacing:-.075em}
+ .footer-grid{gap:32px 22px;padding-top:8px}.footer-intro h3{font-size:16px}.footer-email{font-size:11px}.footer-phone{font-size:18px}.footer-navigation>a{font-size:11px;min-height:32px}.footer-hours{font-size:9px}
+ .request-submit{min-height:44px;padding:0 16px}.request-preview-actions .button{min-height:44px;font-size:9px;padding:0 11px}
+}
+@media(max-width:360px){.brand{width:106px}.header-cta{font-size:6px;padding:0 9px}.hero h1{font-size:40px}.footer-phone{font-size:16px}.doctor-info h3{font-size:17px}}
+/* Keep the blue hero continuous and the authentic portraits comfortably framed. */
+header{background:linear-gradient(180deg,#3156a35c,transparent)}
+.hero::after{display:none}.brand img{filter:brightness(0) invert(1)}
+nav{color:white}.button.header-cta{color:white;background:var(--ink);border-color:var(--ink)}
+.doctor-card{height:370px}.doctor-photo{height:calc(100% - 100px)}
+@media(max-width:900px){.mobile-menu{color:white;border-color:#ffffff65;background:#ffffff0a}}
+@media(max-width:640px){.doctor-card{height:370px}.doctor-photo{height:calc(100% - 100px)}}
+header{background:linear-gradient(180deg,#172e5880,#172e5866 70%,transparent)}
+@media(max-width:900px){.mobile-menu{color:var(--ink);border-color:#dce4ef;background:#fffffff0}}

@@ -110,7 +110,7 @@ function RequestForm({mode}: {mode:Mode}) {
     <dl className="request-summary">{draft.details.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <details className="prepared-message"><summary>Pogledajte pripremljenu poruku<ChevronDown size={16}/></summary><label className="sr-only" htmlFor={`${prefix}-prepared`}>Pripremljeni tekst poruke</label><textarea ref={messageRef} id={`${prefix}-prepared`} readOnly value={draft.body} rows={9}/></details>
     <a className="button request-submit mail-draft-link" href={`mailto:${recipient}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`}><Mail size={16}/><span>OTVORITE E-MAIL</span><ArrowUpRight size={16}/></a>
-    <div className="request-preview-actions"><button type="button" onClick={()=>{setDraft(null);setCopyState('');requestAnimationFrame(()=>formRef.current?.querySelector<HTMLInputElement>('input')?.focus());}}><ArrowLeft size={15}/>Uredite podatke</button><button type="button" onClick={copyMessage}><Copy size={15}/>Kopirajte poruku</button></div>
+    <div className="request-preview-actions"><button className="button button-secondary" type="button" onClick={()=>{setDraft(null);setCopyState('');requestAnimationFrame(()=>formRef.current?.querySelector<HTMLInputElement>('input')?.focus());}}><ArrowLeft size={15}/>Uredite podatke</button><button className="button button-secondary" type="button" onClick={copyMessage}><Copy size={15}/>Kopirajte poruku</button></div>
     <p className="request-copy-status" role="status">{copyState}</p>
     {booking?<p className="request-note"><Check size={15}/>Termin je dogovoren nakon potvrde poliklinike.</p>:null}
   </div>;
