@@ -521,3 +521,50 @@ footer{padding:22px var(--gutter) 17px;container-type:inline-size}.footer-brand-
  .final-actions{position:relative;inset:auto;margin:22px 20px 0;display:grid;grid-template-columns:max-content max-content;gap:8px;align-items:start}
  .final-actions>.button:first-child{grid-column:1/-1;justify-self:start}
 }
+
+/* Gap polish: tighter rhythm and compositions that follow the reference. */
+:root{--section-space:88px}
+.section-heading{margin-bottom:28px}
+.section-heading>.heading-group,.section-heading>div:first-child{max-width:640px}
+.locations{padding-top:var(--section-space)}
+.faq{padding-top:var(--section-space);padding-bottom:var(--section-space)}
+
+/* Doctors: full-bleed portraits with a soft caption gradient instead of a flat blue slab. */
+.doctor-card{height:372px;background:#cfdbe9}
+.doctor-photo{position:absolute;inset:0;height:auto;background:#cfdbe9}
+.doctor-photo img{filter:saturate(.85)}
+.doctor-info{min-height:0;padding:56px 16px 16px;background:linear-gradient(0deg,#172e58f2 0%,#27487ccf 48%,#27487c00 100%);backdrop-filter:none}
+.doctor-info h3{min-height:0;font-size:16px;padding-right:26px}
+.doctor-info p{min-height:0;margin:6px 26px 0 0;font-size:10px}
+.doctor-info>span{right:12px;bottom:14px}
+
+/* Locations / approach: compact tiles, no dead space. */
+.location-grid article{display:flex;flex-direction:column}
+.location-links{margin-top:auto}
+.location-hours{margin-bottom:17px}
+.benefit-grid>div{background:#fafbfd}
+
+@media(min-width:901px){
+  /* Hero: photo reads clearly on the right, a short wash only behind the type. */
+  .hero{height:640px}
+  .hero-photo{width:68%;mask-image:linear-gradient(90deg,transparent 0,#000 34%)}
+  .hero-photo img{object-position:62% 40%;filter:saturate(.85)}
+  .hero-wash{background:linear-gradient(90deg,#edf2f7 0%,#edf2f7f2 24%,#edf2f78a 38%,#edf2f700 54%)}
+  .hero-content{padding-top:128px}
+  .hero-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:36px;display:flex;align-items:flex-end;gap:56px;z-index:2}
+  .hero-foot>*{position:static}
+  .hero-foot .hero-bottom{max-width:300px;margin-right:auto}
+  .hero-foot .hero-facts{gap:40px;padding:14px 20px;border-radius:14px;background:#ffffffc9;backdrop-filter:blur(10px)}
+  .hero-foot .hero-scroll{flex-shrink:0}
+}
+@media(max-width:900px){.hero-foot{display:contents}}
+
+/* Final call to action: actions sit on one tidy row beside the headline. */
+.final-actions{flex-direction:row;flex-wrap:wrap;justify-content:flex-end;max-width:560px;align-items:center}
+
+/* Footer: one calm hours line and a proper bottom bar. */
+.footer-hours{display:flex;flex-wrap:wrap;align-items:center;gap:10px 40px}
+.footer-hours-note{text-align:left;margin-left:auto}
+.footer-bottom{justify-content:space-between;padding-top:12px;font-size:9px;letter-spacing:.2px}
+@media(max-width:640px){.final-actions{flex-direction:column;align-items:stretch;max-width:none}.footer-bottom{flex-wrap:wrap;gap:4px 16px}}
+@media(min-width:641px){.footer-wordmark{line-height:.95;padding:34px 0 14px}.footer-grid{padding-top:30px}}

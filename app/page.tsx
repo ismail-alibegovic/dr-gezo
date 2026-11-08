@@ -82,9 +82,7 @@ export default function Home() {
           <div className="hero-photo"><img src="/images/throat-examination.jpg" width={1800} height={1200} alt="Ljekarica tokom specijalističkog pregleda grla" fetchPriority="high"/></div>
           <div className="hero-wash"/>
           <div className="hero-content"><p className="eyebrow">SPECIJALISTIČKA ORL POLIKLINIKA · SARAJEVO</p><h1 id="hero-title">BRIGA ZA VAŠ<br/>SLUH, DAH<br/>I GLAS.</h1><div className="actions"><Button>ZAKAŽITE PREGLED</Button><Button secondary href="#tim">UPOZNAJTE NAŠ TIM</Button></div></div>
-          <div className="hero-facts"><div><strong>1997.</strong><span>Početak naše priče</span></div><div><strong>2</strong><span>Adrese u Sarajevu</span></div><div><strong>ORL</strong><span>Naša specijalnost</span></div></div>
-          <p className="hero-bottom">Za sve ono što čujete, udahnete i izgovorite.<br/>Iskustvo kojem vjerujete. Pažnja posvećena vama.</p>
-          <a className="hero-scroll" href="#o-nama" aria-label="Saznajte više o poliklinici"><ArrowDown size={17}/></a>
+          <div className="hero-foot"><p className="hero-bottom">Za sve ono što čujete, udahnete i izgovorite.<br/>Iskustvo kojem vjerujete. Pažnja posvećena vama.</p><div className="hero-facts"><div><strong>1997.</strong><span>Početak naše priče</span></div><div><strong>2</strong><span>Adrese u Sarajevu</span></div><div><strong>ORL</strong><span>Naša specijalnost</span></div></div><a className="hero-scroll" href="#o-nama" aria-label="Saznajte više o poliklinici"><ArrowDown size={17}/></a></div>
         </section>
       </div>
 
@@ -108,11 +106,11 @@ export default function Home() {
         </a>)}
       </Carousel>
 
-      <section className="section approach" aria-labelledby="approach-title"><div className="section-heading"><div><p className="eyebrow blue">PAŽNJA U SVAKOM KORAKU</p><h2 id="approach-title">Zdravstvena briga<br/>koja poštuje vaše vrijeme.</h2></div><p className="section-aside">Od zakazivanja do razgovora s ljekarom.<br/>Tu smo da vaš dolazak učinimo jednostavnijim.</p></div>
+      <section className="section approach" aria-labelledby="approach-title"><div className="section-heading"><div><p className="eyebrow blue">PAŽNJA U SVAKOM KORAKU</p><h2 id="approach-title">Zdravstvena briga<br/>koja poštuje vaše vrijeme.</h2><p className="intro">Od zakazivanja do razgovora s ljekarom.<br/>Tu smo da vaš dolazak učinimo jednostavnijim.</p></div></div>
         <div className="benefit-grid">{benefits.map(([name,Icon]) => <div key={name}><Icon size={19} strokeWidth={1.5}/><span>{name}</span></div>)}</div>
       </section>
 
-      <section className="section locations" id="lokacije" aria-labelledby="locations-title"><div className="section-heading"><div><p className="eyebrow blue">BLIZU VAS</p><h2 id="locations-title">Jedna posvećenost.<br/>Dvije adrese u Sarajevu.</h2></div><p className="section-aside">Odaberite lokaciju koja vam odgovara.<br/>Za termin nas kontaktirajte telefonom.</p></div>
+      <section className="section locations" id="lokacije" aria-labelledby="locations-title"><div className="section-heading"><div><p className="eyebrow blue">BLIZU VAS</p><h2 id="locations-title">Jedna posvećenost.<br/>Dvije adrese u Sarajevu.</h2><p className="intro">Odaberite lokaciju koja vam odgovara.<br/>Za termin nas kontaktirajte telefonom.</p></div></div>
         <div className="location-grid">{locations.map((location,index) => <article key={location.name}><div className="location-top"><span>0{index+1} / SARAJEVO</span><MapPin size={19} strokeWidth={1.3}/></div><h3>{location.name}</h3><p className="location-address">{location.address}</p><p className="location-hours"><Clock size={14}/>{location.hours}</p><div className="location-links"><a href={`tel:${location.tel}`} aria-label={`Pozovite ${location.name}: ${location.phone}`}>{location.phone}<ArrowUpRight size={21}/></a><MapLink address={location.address}>Prikaži na mapi</MapLink></div></article>)}</div>
       </section>
 
@@ -131,7 +129,7 @@ export default function Home() {
         <div className="footer-wordmark" aria-label="Dr. Gežo">DR. GEŽO</div>
         <div className="footer-grid"><div className="footer-intro"><h3>Stručnost koja sluša.<br/>Briga koja traje.</h3><p>Specijalistička poliklinika za zdravlje<br/>uha, nosa i grla.</p><a className="footer-email" href="mailto:info@drgezo.ba">info@drgezo.ba<ArrowUpRight size={17}/></a></div><div className="footer-navigation"><h4>POLIKLINIKA</h4><a href="#o-nama">O nama</a><a href="#usluge">Naše usluge</a><a href="#tim">Medicinski tim</a><a href="#prostori">Prostori poliklinike</a><a href="#zakazivanje">Zakažite pregled</a><a href={`${official}/cjenovnik`}>Cjenovnik</a></div>{locations.map(location => <div className="footer-location" key={location.name}><h4>{location.name.toUpperCase()}</h4><p>{location.address}<br/>71000 Sarajevo</p><a className="footer-phone" href={`tel:${location.tel}`}>{location.phone}<ArrowUpRight size={18}/></a><MapLink address={location.address}>Kako do nas</MapLink></div>)}</div>
         <div className="footer-hours"><span><Clock size={16}/>RADNO VRIJEME</span><p>Pon–pet <strong>09:00–19:00</strong></p><p>Subota · Dobrinja <strong>09:00–17:00</strong></p><p className="footer-hours-note">Otoka ne radi subotom.</p></div>
-        <div className="footer-bottom"><a href={official} target="_blank" rel="noreferrer">Službena stranica<ArrowUpRight size={12}/></a></div>
+        <div className="footer-bottom"><span>© 2026 Poliklinika Dr. Gežo · Sarajevo</span><a href={official} target="_blank" rel="noreferrer">Službena stranica<ArrowUpRight size={12}/></a></div>
       </footer>
     </main>
   );
